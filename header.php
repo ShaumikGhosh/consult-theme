@@ -38,7 +38,18 @@
         <nav class="navbar extended">
             <div class="nav-wrapper dark-wrapper inverse-text">
                 <div class="container flex-it">
-                    <div class="navbar-collapse collapse align-left">
+                    <?php
+                        wp_nav_menu(array(
+                            'theme_location' => 'header_menu',
+                            'container' => 'div',
+                            'container_class' => 'navbar-collapse collapse align-left',
+                            'menu_class' => 'nav navbar-nav',
+                            'depth' => 3,
+                            'fallback_cd' => 'WP_Bootstrap_Navwalker::fallback',
+                            'walker' => new WP_Bootstrap_Navwalker(),
+                        ));
+                    ?>
+                    <!-- <div class="navbar-collapse collapse align-left">
                         <ul class="nav navbar-nav">
                             <li>
                                 <a href="index-01.html">Home</a>
@@ -65,7 +76,7 @@
                             </li>
                             <li><a href="contact-page.html">Contacts  </a></li>        
                         </ul>
-                    </div>
+                    </div> -->
                     <div class="navbar-other">
                         <div class="align-right text-right">
                             <div class="navbar-brand">

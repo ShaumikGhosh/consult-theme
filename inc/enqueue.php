@@ -1,8 +1,11 @@
 <?php
 
+
+// adding support for css and js
+
 function consult_css_js(){
 
-    // wp_enqueue_style('google-fonts',consult_fonts_support() , array(), null);
+    wp_enqueue_style('google-font', consult_fonts_support(), array(), null);
 
     wp_enqueue_style('flaticon', get_template_directory_uri().'/assets/css/flaticon.css', array(), null, 'all');
     wp_enqueue_style('font-awsome', get_template_directory_uri().'/assets/css/font-awesome.min.css', array(), null, 'all');
@@ -56,32 +59,35 @@ function consult_css_js(){
 
 add_action('wp_enqueue_scripts', 'consult_css_js');
 
-/*
+
+
+// adding google fonts to frontend site *****
+
 function consult_fonts_support(){
     $fonts_url = '';
 
-    $OpenSans = _x('on', 'OpenSans font: on or off', 'theme-slug');
-    $Montserrat = _x('on', 'Montserrat font: on or off', 'theme-slug');
+    $OpenSans = _x('on', 'OpenSans: on or off', 'consult_theme');
+    $Montserrat = _x('on', 'Montserrat: on or off', 'consult_theme');
 
     if($OpenSans != 'off' || $Montserrat != 'off'){
 
         $font_families = array();
 
-        if ($OpenSans != 'off'){
-            $font_families[] >= 'Open+Sans:300i,400,400i,600,700,800';
+        if ($OpenSans !== 'off'){
+            $font_families[] = 'Open Sans:300i,400,400i,600,700,800';
         }
 
-        if ($Montserrat != 'off'){
-            $font_families[] >= 'Montserrat:200,300,400,500,600,700,800,900';
+        if ($Montserrat !== 'off'){
+            $font_families[] = 'Montserrat:200,300,400,500,600,700,800,900';
         }
 
         $query_args = array(
             'family' => urlencode(implode('|', $font_families)),
-            'subset' => urlencode('latin', 'latin-ext', 'cyrillic', 'vietnames', 'greek', 'greek-ext'),
+            'subset' => urlencode('latin,latin-ext,cyrillic,vietnames,greek,greek-ext'),
         );
         $fonts_url = add_query_arg($query_args, 'https://fonts.googleapis.com/css');
     }
 
     return esc_url_raw($fonts_url);
 }
-*/
+
