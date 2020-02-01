@@ -1,70 +1,78 @@
 <?php get_header();?>
 
     
-    <div class="page_title_banner blog_sidebar_title_bg">
+    <div class="page_title_banner banner_blog_single_title_bg">
         <div class="page_title_banner_overlay"></div>
         <div class="container">
             <div class="page_title_banner_text text-center">
-                <h2 class="banner_effect">Blog Sidebar</h2>
+                <h2 class="banner_effect">Blog single</h2>
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Pages</a></li>
-                    <li class="active">Blog sidebar</li>
+                    <li class="active">blog single</li>
                 </ul>
             </div>
         </div><!--container-->
     </div><!-- page_title_banner -->
+	
 
     <div class="blog_page_area">
         <div class="container">
             <div class="row">
-			
-			
                 <div class="col-md-8">
-				
+                <?php if (have_posts()):?>
+                    <?php while (have_posts()): the_post();?>
                     <div class="blog_left_side_area">
-                        <?php if (have_posts()):?>
-                            <?php while (have_posts()): the_post();?>
-                                <div class="blog_left_single_item">
-                                    <div class="blog_pic image_fulwidth">
-                                        <?php
-                                            the_post_thumbnail('blog-image-size');
-                                        ?>
-                                        <h4 class="date_position"><?php echo get_the_date('F j Y');?></h4>
+                        <div class="blog_pic image_fulwidth">
+                            <?php the_post_thumbnail('single-blog-image-size');?>
+                            <h4 class="date_position"><?php echo get_the_date('F j Y');?></h4>
+                        </div>
+                        <div class="blog_left_single_content blog_single_content para_default">
+                            <h3><?php echo get_the_title();?></h3>
+                            <?php echo the_content();?>
+                        </div>
+                        <div class="blog_tag">
+                            <?php the_tags('Tags:', '', '<br>');?>
+                        </div>
+                        <div class="consultency_comments_form">
+                            <h2 class="comments_title">Leave a Reply</h2>
+                            <div class="row">
+                                <form action="#" method="post">
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="E-mail*">
+                                        </div>
                                     </div>
 
-                                    <div class="blog_left_single_content para_default">
-                                        <h3><a href="<?php the_permalink();?>"><?php echo get_the_title();?></a></h3>
-                                        <?php echo wp_trim_words(get_the_content(), 100);?>
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <input type="url" class="form-control" placeholder="Website">
+                                        </div>
                                     </div>
-                                </div><!-- blog_left_single_item -->
-                            <?php endwhile;?>
-                            <?php wp_reset_postdata();?>
-                        <?php else:?>
-                            <?php get_template_directory('template-parts/page/content', 'none');?>
-                        <?php endif;?>
-                        
-                        <div class="blog_pagination">
-                            <nav>
-                                <ul class="pagination pagination-lg">
-                                    <?php
-                                        the_posts_pagination( array(
-                                            'mid_size'  => 1,
-                                            'prev_text' => __( '', 'textdomain' ),
-                                            'next_text' => __( '<i class="flaticon-right-arrow"></i>', 'textdomain' ),
-                                        ) );
-                                    ?>
-                                </ul>
-                            </nav>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea name="message" class="form-control" rows="4" placeholder="Your Comment"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="send_me_ph">
+                                                <a class="submit_btn_quick_contact" href="#">Submit Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div><!-- blog_left_side_area -->
-					
                 </div><!-- col-md-8 -->
-				
-				
+                    <?php endwhile;?>
+                <?php endif;?>
+
                 <div class="col-md-4">
                     <div class="blog_right_side_area">
-					
                         <div class="blog_right_widget">
                             <div class="blog_widget">
                                 <form action="#" method="post" class="blog_search">
@@ -73,7 +81,6 @@
                                 </form>
                             </div>
                         </div><!-- blog_right_widget  -->
-						
                         
                         <div class="blog_right_widget">
                             <div class="blog_widget">
@@ -168,7 +175,7 @@
                         </div><!-- blog_right_widget  -->
                     </div>
                 </div><!-- col-md-4 -->
-            </div><!-- row -->
+            </div><!-- row -->  
         </div><!-- container -->
     </div><!-- blog_page_area -->
 

@@ -1,0 +1,1 @@
+<?php echo "No post is available right now!"; ?>
