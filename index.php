@@ -64,6 +64,8 @@
 				
                 <div class="col-md-4">
                     <div class="blog_right_side_area">
+
+                        <?php echo dynamic_sidebar('blog-sidebar');?>
 					
                         <div class="blog_right_widget">
                             <div class="blog_widget">

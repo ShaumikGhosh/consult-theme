@@ -1,6 +1,6 @@
 <?php get_header();?>
 
-    
+
     <div class="page_title_banner banner_blog_single_title_bg">
         <div class="page_title_banner_overlay"></div>
         <div class="container">
@@ -34,6 +34,26 @@
                         <div class="blog_tag">
                             <?php the_tags('Tags:', '', '<br>');?>
                         </div>
+                        <div class="share_blog_single_in_social">
+                            <h4>
+                                <span>Share</span> 
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </h4>
+                        </div>
+                        <div class="content_blog_a fix">
+							<div class="e_blog_A">
+                                 <?php echo get_avatar(get_the_author_meta('ID'), 100);?>
+							</div>
+							<div class="blog_a_text">
+								<h5><a href="<?php echo get_author_posts_url(get_the_author_meta('ID'), get_the_author_meta('user_nicename'));?>">
+                                    <?php the_author();?>
+                                </a></h5>
+								<p><?php the_author_meta('description');?></p>
+							</div>
+						</div>
                         <div class="consultency_comments_form">
                             <h2 class="comments_title">Leave a Reply</h2>
                             <div class="row">
